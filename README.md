@@ -1,11 +1,5 @@
 ## Zod Validator
 
-#### Install Zod
-```bash
-npm install zod
-```
----
-
 
 ## Create Module, Service, and Controller
 ```bash
@@ -19,9 +13,9 @@ nest g service student
 ```
 ---
 
-#### Install nestjs-zod
+#### Install zod, nestjs-zod
 ```bash
-npm install nestjs-zod
+npm install zod nestjs-zod
 ```
 ---
 
