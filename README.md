@@ -1,4 +1,4 @@
-## Zod Validator
+## Zod Validation
 
 
 ## Create Module, Service, and Controller
