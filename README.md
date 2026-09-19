@@ -68,6 +68,12 @@ export class StudentController {
 ```
 ---
 
+#### Install nestjs-zod
+```bash
+npm install nestjs-zod
+```
+---
+
 >#### Create koro: student/dto/create-student.dto.ts
 #### ``
 ```bash
