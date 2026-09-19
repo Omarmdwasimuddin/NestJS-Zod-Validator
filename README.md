@@ -67,3 +67,10 @@ export class StudentController {
 }
 ```
 ---
+
+>#### Create koro: student/dto/create-student.dto.ts
+#### ``
+```bash
+
+```
+---
