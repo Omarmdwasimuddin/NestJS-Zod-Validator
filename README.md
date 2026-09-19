@@ -50,14 +50,10 @@ export class StudentService {
 ```bash
 import { Body, Controller, Get, Post } from '@nestjs/common';
 import { StudentService } from './student.service'
-import { InjectPinoLogger, PinoLogger } from 'nestjs-pino';
 
 @Controller('student')
 export class StudentController {
-    constructor(
-        private readonly studentService: StudentService,
-        @InjectPinoLogger(StudentController.name) private readonly logger: PinoLogger,
-    ){}
+    constructor(private readonly studentService: StudentService){}
 
     @Get()
     async getAllStudents(){
@@ -66,7 +62,6 @@ export class StudentController {
 
     @Post()
     async createStudent(@Body() data: {name: string, age: number}){
-        this.logger.info({ payload: data }, 'Incoming create-student request');
         return this.studentService.createStudent(data);
     }
 }
