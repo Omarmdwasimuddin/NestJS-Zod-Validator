@@ -22,27 +22,20 @@ nest g service student
 ### `student.service.ts`
 ```bash
 import { Injectable } from '@nestjs/common';
-import { InjectPinoLogger, PinoLogger } from 'nestjs-pino';
 
 @Injectable()
 export class StudentService {
-    constructor(
-        @InjectPinoLogger(StudentService.name) private readonly logger: PinoLogger,
-    ){}
-
     private students = [
         { id: 1, name: 'Wasim', age: 29 },
         { id: 2, name: 'Hannan', age: 25 },
     ];
 
     async createStudent(data: {name: string, age: number}){
-        this.logger.info({ data }, 'Creating new student');
         const newStudent = {
             id: Date.now(),
             ...data,
         };
         this.students.push(newStudent);
-        this.logger.info({ id: newStudent.id }, 'Student created successfully')
         return newStudent;
     }
 
