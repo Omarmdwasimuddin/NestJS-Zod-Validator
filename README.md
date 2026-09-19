@@ -107,3 +107,11 @@ export class StudentController {
 }
 ```
 ---
+
+
+>## OUTPUT
+<img width="1304" height="606" alt="image" src="https://github.com/user-attachments/assets/d016223f-15ad-4f0c-bc1b-2dcaaa722dd5" />
+
+<img width="1305" height="409" alt="image" src="https://github.com/user-attachments/assets/023a7139-cb23-4491-8476-11558c0652e0" />
+
+---
