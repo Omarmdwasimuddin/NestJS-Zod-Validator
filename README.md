@@ -90,3 +90,19 @@ export const CreateStudentSchema = z.object({
 export class CreateStudentDto extends createZodDto(CreateStudentSchema) {}
 ```
 ---
+
+
+#### `main.ts`
+```bash
+import { NestFactory } from '@nestjs/core';
+import { AppModule } from './app.module';
+import { ZodValidationPipe } from 'nestjs-zod';
+
+async function bootstrap() {
+  const app = await NestFactory.create(AppModule);
+  app.useGlobalPipes(new ZodValidationPipe()); // ei line ta add koro
+  await app.listen(process.env.PORT ?? 3000);
+}
+bootstrap();
+```
+---
