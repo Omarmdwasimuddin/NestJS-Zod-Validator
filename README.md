@@ -25,13 +25,11 @@ npm install zod nestjs-zod
 import { createZodDto } from 'nestjs-zod';
 import { z } from 'zod';
 
-// Ei schema-i validation rule define kore
 export const CreateStudentSchema = z.object({
   name: z.string().min(2, 'Name must be at least 2 characters'),
   age: z.number().int().positive().max(120),
 });
 
-// Eta DTO class banay jeta Nest bujhe
 export class CreateStudentDto extends createZodDto(CreateStudentSchema) {}
 ```
 ---
