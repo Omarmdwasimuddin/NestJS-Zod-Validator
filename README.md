@@ -19,7 +19,7 @@ npm install zod nestjs-zod
 ```
 ---
 
-#### Create koro: 'student/dto/create-student.dto.ts'
+>#### Create koro: `student/dto/create-student.dto.ts`
 #### `create-student.dto.ts`
 ```bash
 import { createZodDto } from 'nestjs-zod';
