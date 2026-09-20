@@ -1,22 +1,5 @@
 ## Zod Validation
 
-#### Structure
-```bash
-src/
-├── common/
-│   └── filters/
-│       └── zod-exception.filter.ts
-├── student/
-│   ├── dto/
-│   │   └── create-student.dto.ts
-│   ├── student.controller.ts
-│   ├── student.service.ts
-│   └── student.module.ts
-├── app.module.ts
-└── main.ts
-```
----
-
 
 ## Create Module, Service, and Controller
 ```bash
@@ -81,6 +64,23 @@ export class ZodExceptionFilter implements ExceptionFilter {
     });
   }
 }
+```
+---
+
+#### Structure
+```bash
+src/
+├── common/
+│   └── filters/
+│       └── zod-exception.filter.ts
+├── student/
+│   ├── dto/
+│   │   └── create-student.dto.ts
+│   ├── student.controller.ts
+│   ├── student.service.ts
+│   └── student.module.ts
+├── app.module.ts
+└── main.ts
 ```
 ---
 
