@@ -101,6 +101,24 @@ bootstrap();
 ```
 ---
 
+#### `app.module.ts`
+```bash
+import { Module } from '@nestjs/common';
+import { AppController } from './app.controller';
+import { AppService } from './app.service';
+import { StudentModule } from './student/student.module';
+import { APP_INTERCEPTOR } from '@nestjs/core';
+import { ZodSerializerInterceptor } from 'nestjs-zod';
+
+@Module({
+  imports: [StudentModule],
+  controllers: [AppController],
+  providers: [ { provide: APP_INTERCEPTOR, useClass: ZodSerializerInterceptor }, AppService],
+})
+export class AppModule {}
+```
+---
+
 #### `student.service.ts`
 ```bash
 import { Injectable } from '@nestjs/common';
