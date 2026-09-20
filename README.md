@@ -51,16 +51,50 @@ export class CreateStudentDto extends createZodDto(CreateStudentSchema) {}
 ```
 ---
 
+>#### Create koro: `common/filters/zod-exception.filter.ts`
+#### `zod-exception.filter.ts`
+```bash
+import { ExceptionFilter, Catch, ArgumentsHost } from '@nestjs/common';
+import { ZodValidationException } from 'nestjs-zod';
+import { ZodError } from 'zod';
+
+@Catch(ZodValidationException)
+export class ZodExceptionFilter implements ExceptionFilter {
+  catch(exception: ZodValidationException, host: ArgumentsHost) {
+    const ctx = host.switchToHttp();
+    const response = ctx.getResponse();
+
+    const zodError = exception.getZodError();
+
+    const errors =
+      zodError instanceof ZodError
+        ? zodError.issues.map((issue) => ({
+            field: issue.path.join('.'),
+            message: issue.message,
+          }))
+        : [];
+
+    response.status(400).json({
+      success: false,
+      error: { code: 'VALIDATION_ERROR', details: errors },
+      timestamp: new Date().toISOString(),
+    });
+  }
+}
+```
+---
 
 #### `main.ts`
 ```bash
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { ZodValidationPipe } from 'nestjs-zod';
+import { ZodExceptionFilter } from './common/filters/zod-exception.filter'; 
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  app.useGlobalPipes(new ZodValidationPipe()); // ei line ta add koro
+  app.useGlobalPipes(new ZodValidationPipe());
+  app.useGlobalFilters(new ZodExceptionFilter());
   await app.listen(process.env.PORT ?? 3000);
 }
 bootstrap();
