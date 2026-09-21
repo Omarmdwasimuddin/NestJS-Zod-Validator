@@ -34,6 +34,22 @@ export class CreateStudentDto extends createZodDto(CreateStudentSchema) {}
 ```
 ---
 
+>#### Create koro: `student/dto/student-response.dto.ts`
+#### `student-response.dto.ts`
+```bash
+import { createZodDto } from 'nestjs-zod';
+import { z } from 'zod';
+
+export const StudentResponseSchema = z.object({
+  id: z.number(),
+  name: z.string(),
+  age: z.number(),
+});
+
+export class StudentResponseDto extends createZodDto(StudentResponseSchema) {}
+```
+---
+
 >#### Create koro: `common/filters/zod-exception.filter.ts`
 #### `zod-exception.filter.ts`
 ```bash
