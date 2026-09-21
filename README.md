@@ -47,6 +47,10 @@ export const StudentResponseSchema = z.object({
 });
 
 export class StudentResponseDto extends createZodDto(StudentResponseSchema) {}
+
+export const StudentsResponseSchema = z.array(StudentResponseSchema);
+
+export class StudentsResponseDto extends createZodDto(StudentsResponseSchema) {}
 ```
 ---
 
@@ -168,7 +172,7 @@ import { Body, Controller, Get, Post } from '@nestjs/common';
 import { StudentService } from './student.service'
 import { CreateStudentDto } from './dto/create-student.dto';
 import { ZodSerializerDto } from 'nestjs-zod';
-import { StudentResponseDto } from './dto/student-response.dto';
+import { StudentResponseDto, StudentsResponseDto } from './dto/student-response.dto';
 
 @Controller('student')
 export class StudentController {
@@ -182,7 +186,7 @@ export class StudentController {
     }
 
     @Get()
-    @ZodSerializerDto(StudentResponseDto)
+    @ZodSerializerDto(StudentsResponseDto)
     async getAllStudents(){
         return this.studentService.getAllStudents();
     }
