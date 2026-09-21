@@ -8,7 +8,7 @@ PORT=3000
 ---
 
 >#### Create koro: `src/env.validation.ts`
-#### ``
+#### `env.validation.ts`
 ```bash
 import { z } from 'zod';
 
