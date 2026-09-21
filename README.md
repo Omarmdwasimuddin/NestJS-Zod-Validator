@@ -167,19 +167,24 @@ export class StudentService {
 import { Body, Controller, Get, Post } from '@nestjs/common';
 import { StudentService } from './student.service'
 import { CreateStudentDto } from './dto/create-student.dto';
+import { ZodSerializerDto } from 'nestjs-zod';
+import { StudentResponseDto } from './dto/student-response.dto';
 
 @Controller('student')
 export class StudentController {
     constructor(private readonly studentService: StudentService){}
 
-    @Get()
-    async getAllStudents(){
-        return this.studentService.getAllStudents();
-    }
 
     @Post()
+    @ZodSerializerDto(StudentResponseDto)
     async createStudent(@Body() data: CreateStudentDto){
         return this.studentService.createStudent(data);
+    }
+
+    @Get()
+    @ZodSerializerDto(StudentResponseDto)
+    async getAllStudents(){
+        return this.studentService.getAllStudents();
     }
 }
 ```
